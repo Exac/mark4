@@ -1,0 +1,52 @@
+<form [formGroup]="form" class="formgrid grid">
+  <p class="col-12">Adjust the clock's offset so it matches the video replay system:</p>
+  <app-info-box class="col-12 mb-3">
+    <p class="text-center text-3xl">{{ currentClockTime$ | async | date: 'hh:mm:ss' }}</p>
+  </app-info-box>
+  <div class="field col">
+    <label for="hours" class="block">Hours</label>
+    <p-inputNumber
+      formControlName="hours"
+      [min]="-11"
+      [max]="11"
+      [showButtons]="true"
+      buttonLayout="vertical"
+      inputId="vertical"
+      decrementButtonClass="p-button-secondary"
+      incrementButtonClass="p-button-secondary"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus">
+    </p-inputNumber>
+  </div>
+  <div class="field col">
+    <label for="minutes" class="block">Minutes</label>
+    <p-inputNumber
+      formControlName="minutes"
+      [min]="-59"
+      [max]="59"
+      [showButtons]="true"
+      buttonLayout="vertical"
+      inputId="vertical"
+      decrementButtonClass="p-button-secondary"
+      incrementButtonClass="p-button-secondary"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus">
+    </p-inputNumber>
+  </div>
+  <div class="field col">
+    <label for="seconds" class="block">Seconds</label>
+    <p-inputNumber
+      formControlName="seconds"
+      [min]="-59"
+      [max]="59"
+      [showButtons]="true"
+      buttonLayout="vertical"
+      inputId="vertical"
+      decrementButtonClass="p-button-secondary"
+      incrementButtonClass="p-button-secondary"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus">
+    </p-inputNumber>
+  </div>
+
+</form>

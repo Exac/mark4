@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { WebModule } from './web/web.module';
 import { RouterModule, Routes } from '@angular/router';
-import { WebComponent } from './web/web.component';
+import { MenubarModule } from 'primeng/menubar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-const routes: Routes = [{ path: '', component: WebComponent }];
+const webRoutes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    loadChildren: () => import('./mark-page/mark-page.module').then(m => m.MarkPageModule),
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings-page/settings-page.module').then(m => m.SettingsPageModule),
+  }
+];
 
 @NgModule({
   declarations: [
@@ -13,10 +23,12 @@ const routes: Routes = [{ path: '', component: WebComponent }];
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
-    WebModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(webRoutes, {enableTracing: true}),
+    MenubarModule,
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

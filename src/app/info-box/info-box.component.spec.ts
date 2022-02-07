@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebComponent } from './web.component';
+import { InfoBoxComponent } from './info-box.component';
 
-describe('WebComponent', () => {
-  let component: WebComponent;
-  let fixture: ComponentFixture<WebComponent>;
+describe('InfoBoxComponent', () => {
+  let component: InfoBoxComponent;
+  let fixture: ComponentFixture<InfoBoxComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WebComponent ]
+      declarations: [ InfoBoxComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WebComponent);
+    fixture = TestBed.createComponent(InfoBoxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
