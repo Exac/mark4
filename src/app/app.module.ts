@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from 'primeng/api';
 
 const webRoutes: Routes = [
   {
@@ -24,8 +25,9 @@ const webRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(webRoutes, {enableTracing: true}),
+    RouterModule.forRoot(webRoutes),
     MenubarModule,
+    SharedModule,
   ],
   providers: [],
   exports: [],

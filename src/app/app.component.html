@@ -1,4 +1,11 @@
 <div class="min-h-screen min-h-full surface-ground text-white">
-<p-menubar [model]="items" ></p-menubar>
+<p-menubar [model]="items" >
+  <ng-template pTemplate="end">
+    <picture class="opacity-70">
+      <source srcset="/assets/img/bcssa.webp">
+      <img src="/assets/img/bcssa.png" alt="BC Speed Skating Logo" />
+    </picture>
+  </ng-template>
+</p-menubar>
 <router-outlet></router-outlet>
 </div>

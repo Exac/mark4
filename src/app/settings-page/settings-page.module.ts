@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { TimeSettingsModule } from '../time-settings/time-settings.module';
 import { PanelModule } from 'primeng/panel';
+import { StorageSettingsModule } from '../storage-settings/storage-settings.module';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { PanelModule } from 'primeng/panel';
     InputNumberModule,
     TimeSettingsModule,
     PanelModule,
+    StorageSettingsModule,
   ],
   exports: [
     SettingsPageComponent,

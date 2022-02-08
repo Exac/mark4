@@ -1,0 +1,17 @@
+<ng-container *ngIf="time | date: 'hh:mm:ss'; let formattedTime">
+  <p-card>
+    <ng-template pTemplate="header">
+      <span class="p-card-title">{{formattedTime}}</span>
+      <p-button
+        (onClick)="remove.emit($event)"
+        icon="pi pi-times"
+        styleClass="p-button-rounded p-button-danger p-button-text"
+        class="delete-btn"
+      ></p-button>
+    </ng-template>
+    <p-avatar label="{{event}}{{race}}"></p-avatar>
+    <p-chip label="From 8:52:45"></p-chip>
+    <p-chip label="To 8:52:53"></p-chip>
+  </p-card>
+</ng-container>
+<br>

@@ -1,1 +1,34 @@
-<p>mark-page works!</p>
+<p-scrollPanel [style]="{ width: '100%', height: '70vh' }">
+  <app-record
+    *ngFor="let record of records$ | async; let i = index;"
+    [time]="record.time"
+    [event]="record.event"
+    [race]="record.race"
+    (remove)="removeRecord(i, $event)"
+    class="mb-7"
+  ></app-record>
+</p-scrollPanel>
+<aside class="pt-3 pb-3">
+  <p-splitButton
+    label="Event {{ currentEvent$ | async }}"
+    icon="pi pi-plus"
+    (onClick)="changeEvent(1)"
+    [model]="eventItems()"
+    styleClass="p-button-primary mr-3"
+  ></p-splitButton>
+  <p-splitButton
+    label="Race {{ currentRace$ | async }}"
+    icon="pi pi-plus"
+    (onClick)="changeRace(1)"
+    [model]="raceItems()"
+    styleClass="p-button-primary mr-3"
+  ></p-splitButton>
+  <p-button
+    label="Mark"
+    styleClass="p-button-lg p-button-danger"
+    icon="pi pi-exclamation-triangle"
+    class="m-3"
+    (onClick)="addRecord()"
+  ></p-button>
+</aside>
+<p-confirmPopup [showTransitionOptions]="'250ms'"></p-confirmPopup>
