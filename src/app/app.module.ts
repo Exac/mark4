@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MenubarModule } from 'primeng/menubar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'primeng/api';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const webRoutes: Routes = [
   {
@@ -28,6 +30,12 @@ const webRoutes: Routes = [
     RouterModule.forRoot(webRoutes),
     MenubarModule,
     SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [],
   exports: [],
