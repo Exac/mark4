@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Letter } from '../mark-page/mark-page.component';
 import { add } from 'date-fns';
-import { BehaviorSubject, map, shareReplay, Subject } from 'rxjs';
+import { BehaviorSubject, map, shareReplay, Subject, withLatestFrom } from 'rxjs';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-record',
@@ -20,11 +21,16 @@ export class RecordComponent {
   @Output() remove = new EventEmitter<Event>();
 
   from$ = this.date$.pipe(
-    map(time => add(time, {seconds: -3})),
+    withLatestFrom(this.settings.paddingBefore$),
+    map(([time, seconds]) => add(time, {seconds})),
     shareReplay({bufferSize: 1, refCount: false})
   );
   to$ = this.date$.pipe(
-    map(time => add(time, {seconds: 3})),
+    withLatestFrom(this.settings.paddingAfter$),
+    map(([time, seconds]) => add(time, {seconds})),
     shareReplay({bufferSize: 1, refCount: false}),
   );
+
+  constructor(private readonly settings: SettingsService) {
+  }
 }

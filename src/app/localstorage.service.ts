@@ -4,7 +4,8 @@ import { isPlatformBrowser } from '@angular/common';
 export type StorageKey =
   'mark_page_records'
   | 'settings_service_offset'
-  | 'settings_suggestion';
+  | 'settings_suggestion'
+  | 'settings_service_padding';
 
 @Injectable({
   providedIn: 'root'
