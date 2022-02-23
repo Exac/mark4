@@ -1,7 +1,11 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
-export type StorageKey = 'mark_page_records' | 'settings_service_offset';
+export type StorageKey =
+  'mark_page_records'
+  | 'settings_service_offset'
+  | 'settings_suggestion'
+  | 'settings_service_padding';
 
 @Injectable({
   providedIn: 'root'

@@ -2,3 +2,27 @@
 .delete-btn {
   float: right;
 }
+
+$bar-height: 9px;
+.range {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 50vw;
+  p-chip {
+    z-index: 2;
+    transform: scale(2);
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    background: rgb(48, 69, 98);
+    height: $bar-height;
+    top: calc(50% - (#{$bar-height} / 2 ));
+    width: 100%;
+    z-index: 1;
+  }
+}

@@ -1,0 +1,15 @@
+@import "src/vars";
+
+:host {
+  display: block;
+  position: relative;
+  height: calc(100vh - 100px);
+}
+
+aside {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}

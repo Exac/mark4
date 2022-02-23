@@ -1,10 +1,10 @@
-<form [formGroup]="form" class="formgrid grid">
-  <p class="col-12">Adjust the clock's offset so it matches the video replay system:</p>
+<form [formGroup]="offsetForm" class="formgrid grid">
+  <p class="col-12">Adjust the clock's offset so it matches the video replay system:<br>Le décalage doit correspondre à l'horloge du système de lecture vidéo: </p>
   <app-info-box class="col-12 mb-3">
     <p class="text-center text-3xl">{{ currentClockTime$ | async | date: 'hh:mm:ss' }}</p>
   </app-info-box>
   <div class="field col">
-    <label for="hours" class="block">Hours</label>
+    <label for="hours" class="block">Hours<br>Heures:</label>
     <p-inputNumber
       formControlName="hours"
       [min]="-11"
@@ -19,7 +19,7 @@
     </p-inputNumber>
   </div>
   <div class="field col">
-    <label for="minutes" class="block">Minutes</label>
+    <label for="minutes" class="block">Minutes<br>Minutes</label>
     <p-inputNumber
       formControlName="minutes"
       [min]="-59"
@@ -34,7 +34,7 @@
     </p-inputNumber>
   </div>
   <div class="field col">
-    <label for="seconds" class="block">Seconds</label>
+    <label for="seconds" class="block">Seconds<br>Secondes</label>
     <p-inputNumber
       formControlName="seconds"
       [min]="-59"
@@ -48,5 +48,37 @@
       decrementButtonIcon="pi pi-minus">
     </p-inputNumber>
   </div>
+</form>
 
+<form [formGroup]="paddingForm">
+  <div class="field col">
+    <label for="before" class="block">Start video x seconds before mark<br>Démarrer la vidéo x secondes avant la marque</label>
+    <p-inputNumber
+      formControlName="before"
+      [min]="-100"
+      [max]="100"
+      [showButtons]="true"
+      buttonLayout="vertical"
+      inputId="before"
+      decrementButtonClass="p-button-secondary"
+      incrementButtonClass="p-button-secondary"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus">
+    </p-inputNumber>
+  </div>
+  <div class="field col">
+    <label for="after" class="block">Start video x seconds after mark<br>Démarrer la vidéo x secondes après la marque</label>
+    <p-inputNumber
+      formControlName="after"
+      [min]="-100"
+      [max]="100"
+      [showButtons]="true"
+      buttonLayout="vertical"
+      inputId="before"
+      decrementButtonClass="p-button-secondary"
+      incrementButtonClass="p-button-secondary"
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus">
+    </p-inputNumber>
+  </div>
 </form>

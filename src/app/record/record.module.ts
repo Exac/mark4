@@ -5,22 +5,23 @@ import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
 import { ChipModule } from 'primeng/chip';
 import { ButtonModule } from 'primeng/button';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
-    declarations: [
-        RecordComponent
-    ],
-    exports: [
-        RecordComponent
-    ],
-    imports: [
-        CommonModule,
-        CardModule,
-        AvatarModule,
-        ChipModule,
-        ButtonModule
-    ]
+  declarations: [
+    RecordComponent
+  ],
+  exports: [
+    RecordComponent
+  ],
+  imports: [
+    CommonModule,
+    CardModule,
+    AvatarModule,
+    ChipModule,
+    ButtonModule,
+  ]
 })
-export class RecordModule { }
+export class RecordModule {
+}
