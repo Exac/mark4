@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { LocalStorageService } from '../localstorage.service';
+import { SettingsService } from '../settings.service';
+import { add } from 'date-fns';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 export type Letter =
   'A'
@@ -42,6 +45,14 @@ export type Record = {
   templateUrl: './mark-page.component.html',
   styleUrls: ['./mark-page.component.scss'],
   providers: [ConfirmationService],
+  animations: [
+    trigger('fadein', [
+      transition(':enter', [
+        style({ opacity: '0' }),
+        animate('0.5s ease-out', style({ opacity: '1.0' })),
+      ]),
+    ]),
+  ],
 })
 export class MarkPageComponent implements OnInit {
   records$: BehaviorSubject<Array<Record>> = new BehaviorSubject<Array<Record>>([]);
@@ -89,6 +100,7 @@ export class MarkPageComponent implements OnInit {
   constructor(
     private readonly confirmation: ConfirmationService,
     private readonly storage: LocalStorageService,
+    private readonly settings: SettingsService,
   ) {
   }
 
@@ -120,11 +132,13 @@ export class MarkPageComponent implements OnInit {
     }
   };
 
-  addRecord = (record: Record = {
-    time: new Date(),
-    event: this.currentEvent$.value,
-    race: this.currentRace$.value,
-  }): void => {
+  addRecord = async (): Promise<void> => {
+    const offset: Duration = await firstValueFrom(this.settings.offsetClock$);
+    const record: Record = {
+      time: add(new Date(), offset),
+      event: this.currentEvent$.value,
+      race: this.currentRace$.value,
+    }
     this.records$.next([ record, ...this.records$.value ]);
     this.storage.set('mark_page_records', JSON.stringify(this.records$.value));
   };

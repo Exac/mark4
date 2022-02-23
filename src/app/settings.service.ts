@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { Duration } from 'date-fns';
 import { LocalStorageService } from './localstorage.service';
+
+export type Suggestion = {
+  before: Duration;
+  after: Duration;
+};
 
 @Injectable({
   providedIn: 'root'

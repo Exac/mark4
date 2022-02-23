@@ -15,7 +15,7 @@ export class AppComponent {
       replaceUrl: true,
     },
     {
-      label: 'Settings',
+      label: 'Configuration',
       icon: 'pi pi-fw pi-cog',
       routerLink: '/settings',
       replaceUrl: true,

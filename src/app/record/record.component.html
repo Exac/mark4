@@ -1,6 +1,8 @@
-<ng-container *ngIf="time | date: 'hh:mm:ss'; let formattedTime">
+<ng-container *ngIf="date$ | async | date: 'hh:mm:ss'; let formattedTime">
   <p-card>
     <ng-template pTemplate="header">
+      <p-avatar label="{{event}}{{race}}"></p-avatar>
+      &nbsp;
       <span class="p-card-title">{{formattedTime}}</span>
       <p-button
         (onClick)="remove.emit($event)"
@@ -9,9 +11,11 @@
         class="delete-btn"
       ></p-button>
     </ng-template>
-    <p-avatar label="{{event}}{{race}}"></p-avatar>
-    <p-chip label="From 8:52:45"></p-chip>
-    <p-chip label="To 8:52:53"></p-chip>
+
+    <div class="range">
+      <p-chip label="{{ from$ | async | date: 'mm:ss' }}"></p-chip>
+      <p-chip label="{{ to$ | async | date: 'mm:ss' }}"></p-chip>
+    </div>
   </p-card>
 </ng-container>
 <br>
