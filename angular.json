@@ -111,6 +111,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "mark4:build:production",
+            "firebaseProject": "bcssa-mark",
+            "firebaseHostingSite": "bcssa-mark"
+          }
         }
       }
     }

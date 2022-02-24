@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "bcssa-mark"
+  },
+  "targets": {
+    "bcssa-mark": {
+      "hosting": {
+        "mark4": [
+          "bcssa-mark"
+        ]
+      }
+    }
   }
 }
