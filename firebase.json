@@ -1,6 +1,7 @@
 {
   "hosting": [
     {
+      "target": "bcssa-mark",
       "public": "dist/mark4",
       "ignore": [
         "firebase.json",
