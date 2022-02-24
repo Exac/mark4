@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'primeng/api';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
 
 const webRoutes: Routes = [
   {
@@ -26,6 +27,7 @@ const webRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     RouterModule.forRoot(webRoutes),
     MenubarModule,
